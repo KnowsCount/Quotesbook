@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.quote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+.button {
+  padding: 0.5em;
+  font-size: 1em;
+}

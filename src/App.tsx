@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
+import AddQuote from './AddQuote';
+import DisplayQuotes from './DisplayQuotes';
+import styles from './App.module.css';
 
-function App() {
+const App: React.FC = () => {
+  const [page, setPage] = useState<string>('add');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.container}>
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="/"><h1>Quotesbook</h1></Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link onClick={() => setPage('add')}><p>Add Quote</p></Nav.Link>
+            <Nav.Link onClick={() => setPage('display')}><p id='choices'>Display Quotes</p></Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+      <div className={styles.content}>
+        {page === 'add' ? <AddQuote /> : <DisplayQuotes />}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
